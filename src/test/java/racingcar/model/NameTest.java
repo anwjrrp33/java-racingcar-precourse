@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class NameTest {
@@ -23,5 +24,14 @@ public class NameTest {
                 () -> { new Name(name); });
 
         assertEquals("자동차 이름은 5자 이하만 가능합니다.", exception.getMessage());
+    }
+
+    @ParameterizedTest
+    @NullSource
+    void 이름_NULL_확인(String name) {
+        RuntimeException exception = assertThrows(IllegalArgumentException.class,
+            () -> { new Name(name); });
+
+        assertEquals("자동차 이름은 NULL 값이 불가능합니다.", exception.getMessage());
     }
 }

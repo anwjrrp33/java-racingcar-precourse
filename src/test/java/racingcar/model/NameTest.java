@@ -28,6 +28,7 @@ public class NameTest {
 
     @ParameterizedTest
     @NullSource
+    @ValueSource(strings = { "" })
     void 이름_NULL_확인(String name) {
         RuntimeException exception = assertThrows(IllegalArgumentException.class,
             () -> { new Name(name); });

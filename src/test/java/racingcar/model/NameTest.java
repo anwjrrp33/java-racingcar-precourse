@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.code.NameErrorCode;
 
@@ -26,8 +26,7 @@ public class NameTest {
     }
 
     @ParameterizedTest
-    @NullSource
-    @ValueSource(strings = { "" })
+    @NullAndEmptySource
     void 이름_NULL_확인(String name) {
         RuntimeException exception = assertThrows(IllegalArgumentException.class,
             () -> { new Name(name); });

@@ -1,13 +1,12 @@
 package racingcar.model;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.code.NameErrorCode;
 
 public class NameTest {
 
@@ -23,7 +22,7 @@ public class NameTest {
         RuntimeException exception = assertThrows(IllegalArgumentException.class,
                 () -> { new Name(name); });
 
-        assertEquals("자동차 이름은 5자 이하만 가능합니다.", exception.getMessage());
+        assertEquals(NameErrorCode.LENGTH.getMessage(), exception.getMessage());
     }
 
     @ParameterizedTest
@@ -33,7 +32,7 @@ public class NameTest {
         RuntimeException exception = assertThrows(IllegalArgumentException.class,
             () -> { new Name(name); });
 
-        assertEquals("자동차 이름은 NULL 값이 불가능합니다.", exception.getMessage());
+        assertEquals(NameErrorCode.NULL.getMessage(), exception.getMessage());
     }
     
     @ParameterizedTest
@@ -42,6 +41,6 @@ public class NameTest {
         RuntimeException exception = assertThrows(IllegalArgumentException.class,
             () -> { new Name(name); });
 
-        assertEquals("자동차 이름은 공백 값이 불가능합니다.", exception.getMessage());
+        assertEquals(NameErrorCode.EMPTY.getMessage(), exception.getMessage());
     }
 }

@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.code.NameErrorCode;
+
 public class Name {
 
     private static final int MAX_LENGTH = 5;
@@ -8,6 +10,7 @@ public class Name {
 
     public Name(final String name) {
         nameNull(name);
+        nameEmpty(name);
         nameLength(name);
         this.name = name;
     }
@@ -18,13 +21,19 @@ public class Name {
 
     private void nameLength(final String name) {
         if(name.length() > MAX_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            throw new IllegalArgumentException(NameErrorCode.LENGTH.getMessage());
         }
     }
 
     private void nameNull(final String name) {
         if(isNull(name)) {
-            throw new IllegalArgumentException("자동차 이름은 NULL 값이 불가능합니다.");
+            throw new IllegalArgumentException(NameErrorCode.NULL.getMessage());
+        }
+    }
+
+    private void nameEmpty(final String name) {
+        if(name.trim().isEmpty()) {
+            throw new IllegalArgumentException(NameErrorCode.EMPTY.getMessage());
         }
     }
 

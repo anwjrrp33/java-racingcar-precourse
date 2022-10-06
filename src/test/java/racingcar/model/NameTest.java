@@ -35,4 +35,13 @@ public class NameTest {
 
         assertEquals("자동차 이름은 NULL 값이 불가능합니다.", exception.getMessage());
     }
+    
+    @ParameterizedTest
+    @ValueSource(strings = { " ", "   " })
+    void 이름_공백_확인(String name) {
+        RuntimeException exception = assertThrows(IllegalArgumentException.class,
+            () -> { new Name(name); });
+
+        assertEquals("자동차 이름은 공백 값이 불가능합니다.", exception.getMessage());
+    }
 }

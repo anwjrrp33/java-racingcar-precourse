@@ -1,6 +1,6 @@
 package racingcar.code;
 
-public enum NameErrorCode {
+public enum NameErrorCode implements errorCode {
 
     LENGTH("자동차 이름은 5자 이하만 가능합니다."),
 
@@ -15,6 +15,6 @@ public enum NameErrorCode {
     }
 
     public String getMessage() {
-        return message;
+        return ERROR + message;
     }
 }

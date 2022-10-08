@@ -1,6 +1,6 @@
 package racingcar.code;
 
-public interface errorCode {
+public interface ErrorCode {
 
     public static String ERROR = "[ERROR] ";
 }

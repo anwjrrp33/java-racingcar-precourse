@@ -2,6 +2,9 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.dto.GameHistories;
+import racingcar.dto.GameHistory;
+import racingcar.util.Random;
 
 public class Cars {
 
@@ -23,5 +26,16 @@ public class Cars {
 
     public List<Car> getCars() {
         return this.cars;
+    }
+
+    public GameHistories getHistories() {
+        List<GameHistory> gameHistories = new ArrayList<>();
+
+        for (Car car : cars) {
+            car.moveForward(Random.location());
+            gameHistories.add(new GameHistory(car.getName(), car.getDistance()));
+        }
+
+        return new GameHistories(gameHistories);
     }
 }

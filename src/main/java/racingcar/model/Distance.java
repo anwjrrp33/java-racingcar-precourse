@@ -10,6 +10,10 @@ public class Distance {
         this.distance = MIN_NUMBER;
     }
 
+    public Distance(int distance) {
+        this.distance = distance;
+    }
+
     public int getDistance() {
         return this.distance;
     }

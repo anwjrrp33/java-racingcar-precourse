@@ -13,6 +13,4 @@ public class GameHistories {
     public List<GameHistory> getPlayHistories() {
         return this.gameHistories;
     }
-
-
 }
